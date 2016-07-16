@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">NIm4Practica2</string>
+    <string name="aregistro_btn_registrar">Registrar</string>
+    <string-array name="apps">
+        <item>App 1</item>
+        <item>App 2 </item>
+        <item>App 3</item>
+        <item>App 4</item>
+        <item>App 5</item>
+    </string-array>
 </resources>
