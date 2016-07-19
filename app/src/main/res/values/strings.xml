@@ -8,4 +8,14 @@
         <item>App 4</item>
         <item>App 5</item>
     </string-array>
+    <string name="amain_mensajeSnack">Snackbar</string>
+
+    <string name="amain_mensaje_oncreate">onCreate</string>
+    <string name="amain_mensaje_onstart">onStart</string>
+    <string name="amain_mensaje_onresume">onResume</string>
+    <string name="amain_mensaje_onrestart">onRestart</string>
+    <string name="amain_mensaje_onpause">onPause</string>
+    <string name="amain_mensaje_onstop">onStop</string>
+    <string name="amain_mensaje_ondestroy">onDestroy</string>
+    <string name="amain_mensajeAccionSnack">Hacer algo</string>
 </resources>
