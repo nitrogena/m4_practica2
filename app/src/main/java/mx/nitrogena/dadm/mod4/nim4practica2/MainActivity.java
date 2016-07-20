@@ -1,5 +1,6 @@
 package mx.nitrogena.dadm.mod4.nim4practica2;
 
+import android.content.Intent;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.widget.SwipeRefreshLayout;
@@ -8,15 +9,22 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Adapter;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
+
+import java.util.ArrayList;
+
+import mx.nitrogena.dadm.mod4.nim4practica2.Model.AppModel;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     SwipeRefreshLayout srl;
     ListView lvApp;
     Adapter adaptador;
+
+    ArrayList<AppModel> arrLstAppMdl;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,21 +36,54 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Log.i("hola", "clic en algun lugar");
 
 
+        arrLstAppMdl = new ArrayList<AppModel>();
+        arrLstAppMdl.add(new AppModel("App abc def", "Nidia Orduña"));
+        arrLstAppMdl.add(new AppModel("App ghi jkl", "Angelina Ochoa"));
+        arrLstAppMdl.add(new AppModel("App mnñ opq", "Irma Ocaña"));
+        arrLstAppMdl.add(new AppModel("App rst uvw", "Doris Olvera"));
+
+        final ArrayList<String> arrLstNomApp = new ArrayList<>();
+        for (AppModel regApp : arrLstAppMdl){
+            arrLstNomApp.add(regApp.getStrNombreApp());
+        }
+
+
+
+
         //Nos devuelve un VIEW, y debemos hacer el cast
         lvApp = (ListView) findViewById(R.id.amain_lv_app);
+
+        lvApp.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, arrLstNomApp));
+        lvApp.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Intent intent = new Intent(MainActivity.this, DetalleActivity.class);
+                intent.putExtra("NombreApp", arrLstAppMdl.get(i).getStrNombreApp());
+                intent.putExtra("Desarrollador", arrLstAppMdl.get(i).getStrDesarrollador());
+                //se pueden enviar arreglos
+                startActivity(intent);
+            }
+        });
+
+
+
+
+        /*SE PUEDE HACER UN ARREGLO DESDE ARCHIVO strings.xml
         //Arreglo que se obtiene del archivo strings.xml
         //Para rellenar la lista
         String[] arrApp = getResources().getStringArray(R.array.apps);
         //en el adaptador se coloca el contexto, un tipo de layout, los datos
         lvApp.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, arrApp));
 
+*/
         //Objeto ya referenciado, ya existe en la memoria, por lo que no se necesta instanciarlo
         srl = (SwipeRefreshLayout) findViewById(R.id.amain_srl);
         srl.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                refrescarContenido();
-            }
+            refrescarContenido(arrLstNomApp);
+        }
         });
 
         /*
@@ -58,10 +99,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     }
 
-    public void refrescarContenido(){
+    public void refrescarContenido(ArrayList<String> arrLstNomApp){
         //se puede enviar otra lista, o datos de webservice
-        String[] arrApp = getResources().getStringArray(R.array.apps);
-        lvApp.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, arrApp));
+        //String[] arrApp = getResources().getStringArray(R.array.apps);
+        //lvApp.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, arrApp));
+
+        lvApp.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, arrLstNomApp));
         srl.setRefreshing(false);
     }
 

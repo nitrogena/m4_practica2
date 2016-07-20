@@ -25,7 +25,7 @@
             <ImageView
                 android:id="@+id/adetalle_iv_imgApp"
 
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
         </LinearLayout>
 
@@ -40,7 +40,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
 
-                android:textSize="18sp"
+                android:textSize="@dimen/adetalle_tv_tamanio"
                 android:textStyle="bold"/>
 
             <TextView
@@ -48,7 +48,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
 
-                android:textSize="18sp"
+                android:textSize="@dimen/adetalle_tv_tamanio"
                 android:textStyle="bold"/>
 
 

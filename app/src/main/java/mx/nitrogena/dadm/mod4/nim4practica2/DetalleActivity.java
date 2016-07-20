@@ -9,5 +9,11 @@ public class DetalleActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detalle);
+
+        Bundle bdlExtras = getIntent().getExtras();
+        String strNombreApp = bdlExtras.getString("NombreApp");
+        String strDesarrollador = bdlExtras.getString("Desarrollador");
+
+
     }
 }

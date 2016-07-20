@@ -7,6 +7,8 @@
     <dimen name="amain_cv_altura">200dp</dimen>
     <dimen name="amain_cv_radioEsq">4dp</dimen>
     <dimen name="amain_cvtv_tamanio">18dp</dimen>
+
     <dimen name="adetalle_ll_minAltura">56dp</dimen>
     <dimen name="adetalle_iv_margin">16dp</dimen>
+    <dimen name="adetalle_tv_tamanio">18sp</dimen>
 </resources>
