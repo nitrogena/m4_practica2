@@ -28,11 +28,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Log.i("hola", "clic en algun lugar");
 
 
-
+        //Nos devuelve un VIEW, y debemos hacer el cast
         lvApp = (ListView) findViewById(R.id.amain_lv_app);
+        //Arreglo que se obtiene del archivo strings.xml
+        //Para rellenar la lista
         String[] arrApp = getResources().getStringArray(R.array.apps);
+        //en el adaptador se coloca el contexto, un tipo de layout, los datos
         lvApp.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, arrApp));
 
+        //Objeto ya referenciado, ya existe en la memoria, por lo que no se necesta instanciarlo
         srl = (SwipeRefreshLayout) findViewById(R.id.amain_srl);
         srl.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
@@ -55,6 +59,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     public void refrescarContenido(){
+        //se puede enviar otra lista, o datos de webservice
         String[] arrApp = getResources().getStringArray(R.array.apps);
         lvApp.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, arrApp));
         srl.setRefreshing(false);
@@ -111,12 +116,21 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onStop() {
         super.onStop();
         Toast.makeText(this, getResources().getString(R.string.amain_mensaje_onstop), Toast.LENGTH_SHORT).show();
+
+        //Cuando se aprieta el boton de home, la actividad pasa a onPause y onStop, no es destruida,
+        //y si se regresa  a ella entonces comienza con el onRestart, onStart, onResume, ya no se crea
+
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
         Toast.makeText(this,getResources().getString(R.string.amain_mensaje_ondestroy), Toast.LENGTH_SHORT).show();
+
+        //Cuando le damos back la aplicacion se va onPause, onStop y es destruida
+        //lo mismo pasa cuando se cambia la orientacion del telefono
+        //esto es importante para los formularios,porque se borrara la informacion
+
     }
 
 

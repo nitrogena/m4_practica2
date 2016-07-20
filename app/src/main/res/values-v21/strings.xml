@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="amain_msj_sinApp">La lista no tiene elementos.</string>
+    <string name="adetalle_btn_desinstalar">UNINSTALL</string>
+    <string name="adetalle_btn_abrir">OPEN</string>
+</resources>

@@ -2,4 +2,11 @@
     <!-- Default screen margins, per the Android Design guidelines. -->
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="amain_lv_altura">200dp</dimen>
+    <dimen name="amain_cv_ancho">200dp</dimen>
+    <dimen name="amain_cv_altura">200dp</dimen>
+    <dimen name="amain_cv_radioEsq">4dp</dimen>
+    <dimen name="amain_cvtv_tamanio">18dp</dimen>
+    <dimen name="adetalle_ll_minAltura">56dp</dimen>
+    <dimen name="adetalle_iv_margin">16dp</dimen>
 </resources>
