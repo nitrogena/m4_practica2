@@ -1,11 +1,10 @@
 package mx.nitrogena.dadm.mod4.nim4practica2;
 
 import android.content.Intent;
-import android.support.design.widget.FloatingActionButton;
+import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Adapter;
@@ -42,6 +41,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         arrLstAppMdl.add(new AppModel("App mnñ opq", "Irma Ocaña"));
         arrLstAppMdl.add(new AppModel("App rst uvw", "Doris Olvera"));
 
+
+        //boolean blnBandera = !(arrLstAppMdl.size()%2 == 0);
+        //final String strImgApp = blnBandera ? R.drawable.ic_action_extension : R.drawable.ic_notification_adb;
+
         final ArrayList<String> arrLstNomApp = new ArrayList<>();
         for (AppModel regApp : arrLstAppMdl){
             arrLstNomApp.add(regApp.getStrNombreApp());
@@ -58,11 +61,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+
+                boolean blnBandera = !(i%2 == 0);
+                final int intImgApp = blnBandera ? R.drawable.ic_content_add : R.drawable.ic_content_add_circle;
+
                 Intent intent = new Intent(MainActivity.this, DetalleActivity.class);
                 intent.putExtra("NombreApp", arrLstAppMdl.get(i).getStrNombreApp());
                 intent.putExtra("Desarrollador", arrLstAppMdl.get(i).getStrDesarrollador());
-                //se pueden enviar arreglos
+                intent.putExtra("ImgApp", intImgApp);
+                //se pueden enviar arreglos de strings
                 startActivity(intent);
+                //PARA TENER SOLO UNA ACTIVIDAD EN EL STACK
+                finish();
             }
         });
 
@@ -77,7 +87,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         lvApp.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, arrApp));
 
 */
-        //Objeto ya referenciado, ya existe en la memoria, por lo que no se necesta instanciarlo
+        //Objeto ya referenciado, ya existe en la memoria, por lo que no se necesita instanciarlo
         srl = (SwipeRefreshLayout) findViewById(R.id.amain_srl);
         srl.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override

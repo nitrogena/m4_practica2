@@ -25,15 +25,17 @@
             <ImageView
                 android:id="@+id/adetalle_iv_imgApp"
 
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_margin="10dp"
+                android:layout_width="70dp"
+                android:layout_height="70dp"/>
         </LinearLayout>
 
         <LinearLayout
             android:layout_weight="0.3"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:onClick="enviarCorreo">
 
             <TextView
                 android:id="@+id/adetalle_tv_nombreApp"
