@@ -36,10 +36,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 
         arrLstAppMdl = new ArrayList<AppModel>();
-        arrLstAppMdl.add(new AppModel("App abc def", "Nidia Orduña"));
-        arrLstAppMdl.add(new AppModel("App ghi jkl", "Angelina Ochoa"));
-        arrLstAppMdl.add(new AppModel("App mnñ opq", "Irma Ocaña"));
-        arrLstAppMdl.add(new AppModel("App rst uvw", "Doris Olvera"));
+        arrLstAppMdl.add(new AppModel("App abc def", "Nidia Orduña", intImgApp, dblCalifica));
+        arrLstAppMdl.add(new AppModel("App ghi jkl", "Angelina Ochoa", intImgApp, dblCalifica));
+        arrLstAppMdl.add(new AppModel("App mnñ opq", "Irma Ocaña", intImgApp, dblCalifica));
+        arrLstAppMdl.add(new AppModel("App rst uvw", "Doris Olvera", intImgApp, dblCalifica));
 
 
         //boolean blnBandera = !(arrLstAppMdl.size()%2 == 0);
