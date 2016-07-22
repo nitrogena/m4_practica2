@@ -1,29 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<android.support.design.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
+
     tools:context="mx.nitrogena.dadm.mod4.nim4practica2.MainActivity"
     android:background="@color/colorDivider">
 
 <!--Quitar el color de background-->
+    <include android:id="@+id/actionBar"
+        layout="@layout/actionbar">
+    </include>
+
+
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/amain_padding_top">
 
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/amain_tv_mensaje"
-            android:text="@string/amain_msj_sinApp"/>
-            <!--android:layout_below="@+id/amain_srl"-->
 
 
         <android.support.design.widget.FloatingActionButton
@@ -31,9 +33,12 @@
             android:layout_height="wrap_content"
             android:src="@drawable/ic_content_add"
             android:id="@+id/amain_btn_registrar"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true"
-            android:layout_below="@+id/amain_tv_mensaje"/>
+            android:elevation="@dimen/amain_btn_fab_elevacion"
+            android:layout_alignParentTop="true"
+            android:layout_alignRight="@+id/amain_rv_recyclerV"
+            android:layout_alignEnd="@+id/amain_rv_recyclerV"
+            android:layout_marginRight="18dp"
+            android:layout_marginEnd="18dp" />
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/amain_rv_recyclerV"
@@ -42,6 +47,14 @@
             android:layout_below="@+id/amain_btn_registrar"
             >
         </android.support.v7.widget.RecyclerView>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/amain_tv_mensaje"
+            android:text="@string/amain_msj_sinApp"
+            android:layout_below="@id/amain_rv_recyclerV"/>
+        <!--android:layout_below="@+id/amain_srl"-->
+
 
         <!--android:layout_below="@+id/amain_tv_mensaje"-->
 
@@ -117,3 +130,4 @@
 
     </RelativeLayout>
 </android.support.design.widget.CoordinatorLayout>
+

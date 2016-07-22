@@ -8,6 +8,7 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutCompat;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.widget.Adapter;
@@ -36,6 +37,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        Toolbar tbActionBar = (Toolbar) findViewById(R.id.actionBar);
+        setSupportActionBar(tbActionBar);
+        /*tbActionBar.setTitle(R.string.amain_titulo);*/
 
         tvMensaje = (TextView) findViewById(R.id.amain_tv_mensaje);
 

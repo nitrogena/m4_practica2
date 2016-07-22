@@ -7,38 +7,51 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
-public class DetalleActivity extends AppCompatActivity {
+public class DetalleActivity extends AppCompatActivity implements View.OnClickListener {
 
     private ImageView ivImgApp;
     private TextView tvNombreApp;
     private TextView tvAutorApp;
+
+    private ImageButton btnLike;
+    private String strCalifica;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detalle);
 
+        Toolbar tbActionBar = (Toolbar) findViewById(R.id.actionBar);
+        setSupportActionBar(tbActionBar);
+
         ivImgApp = (ImageView) findViewById(R.id.adetalle_iv_imgApp);
         tvNombreApp = (TextView) findViewById(R.id.adetalle_tv_nombreApp);
         tvAutorApp = (TextView) findViewById(R.id.adetalle_tv_autorApp);
+
+        btnLike = (ImageButton) findViewById(R.id.adetalle_btn_like);
 
         //Obteniendo datos de la MainActivity O ADAPTADOR
         Bundle bdlExtras = getIntent().getExtras();
         String strNombreApp = bdlExtras.getString("NombreApp");
         String strDesarrollador = bdlExtras.getString("Desarrollador");
         int intImgApp = bdlExtras.getInt("ImgApp");
-        String strCalifica = bdlExtras.getString("Calificacion");
+        strCalifica = bdlExtras.getString("Calificacion");
         String strInstalada = bdlExtras.getString("Instalada");
 
         tvNombreApp.setText(strNombreApp);
         tvAutorApp.setText(strDesarrollador);
         ivImgApp.setImageResource(intImgApp);
+
+        btnLike.setOnClickListener(this);
 
 
 
@@ -86,4 +99,8 @@ public class DetalleActivity extends AppCompatActivity {
     }
 
 
+    @Override
+    public void onClick(View view) {
+        Toast.makeText(this, "Tiene calificacion de: "+strCalifica, Toast.LENGTH_SHORT).show();
+    }
 }
