@@ -28,11 +28,13 @@ public class DetalleActivity extends AppCompatActivity {
         tvNombreApp = (TextView) findViewById(R.id.adetalle_tv_nombreApp);
         tvAutorApp = (TextView) findViewById(R.id.adetalle_tv_autorApp);
 
-        //Obteniendo datos de la MainActivity
+        //Obteniendo datos de la MainActivity O ADAPTADOR
         Bundle bdlExtras = getIntent().getExtras();
         String strNombreApp = bdlExtras.getString("NombreApp");
         String strDesarrollador = bdlExtras.getString("Desarrollador");
         int intImgApp = bdlExtras.getInt("ImgApp");
+        String strCalifica = bdlExtras.getString("Calificacion");
+        String strInstalada = bdlExtras.getString("Instalada");
 
         tvNombreApp.setText(strNombreApp);
         tvAutorApp.setText(strDesarrollador);
@@ -73,7 +75,7 @@ public class DetalleActivity extends AppCompatActivity {
 
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
-
+        //SE USA PORQUE PUSIMOS UN FINISH, EN EL ADAPTADOR O ACTIVIDAD
         if (keyCode == KeyEvent.KEYCODE_BACK) {
             Intent intentKC = new Intent(DetalleActivity.this, MainActivity.class);
             //AL HACER CLIC EN BOTON REGRESAR SE VUELVA A CREAR MAINACTIVITY, LA CUAL YA TIENE UN FINISH

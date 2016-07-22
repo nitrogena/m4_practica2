@@ -1,16 +1,21 @@
 package mx.nitrogena.dadm.mod4.nim4practica2.Adapter;
 
+import android.app.Activity;
+import android.content.Intent;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 
+import mx.nitrogena.dadm.mod4.nim4practica2.DetalleActivity;
 import mx.nitrogena.dadm.mod4.nim4practica2.Model.AppModel;
 import mx.nitrogena.dadm.mod4.nim4practica2.R;
 
@@ -19,10 +24,12 @@ import mx.nitrogena.dadm.mod4.nim4practica2.R;
  */
 public class AppAdapter extends RecyclerView.Adapter<AppAdapter.AppViewHolder>{
     ArrayList<AppModel> arrLstAppMdl;
+    Activity activity;
 
     //Constructor
-    public AppAdapter(ArrayList<AppModel> arrLstAppMdl){
+    public AppAdapter(ArrayList<AppModel> arrLstAppMdl, Activity activity){
         this.arrLstAppMdl = arrLstAppMdl;
+        this.activity = activity;
     }
 
     @Override
@@ -40,7 +47,7 @@ public class AppAdapter extends RecyclerView.Adapter<AppAdapter.AppViewHolder>{
         //se pasa lista de contactos a cada elemento, con set,
         //se invoca para cada uno de los elementos de la lista
         //obtiene el objeto del que está interando
-        AppModel regAppModel = arrLstAppMdl.get(position);
+        final AppModel regAppModel = arrLstAppMdl.get(position);
 
         boolean blnBandera = !(position%2 == 0);
         final int intImgApp = blnBandera ? R.drawable.sh_sm_img : R.drawable.ba_1;
@@ -49,19 +56,33 @@ public class AppAdapter extends RecyclerView.Adapter<AppAdapter.AppViewHolder>{
         holder.ivImgApp.setImageResource(intImgApp);
 
         if (regAppModel.getStrInstalada().toString() == "si"){
-            holder.tvInstalada.setText("INSTALADA");
+            holder.tvInstalada.setText(R.string.cvapp_tv_instalada);
         }
         else{
-            holder.tvInstalada.setText("NO INSTALADA");
+            holder.tvInstalada.setText(R.string.cvapp_tv_noInstalada);
         }
-
-
         //holder.tvInstalada.setText(regAppModel.getStrInstalada());
         holder.tvCalifica.setText(regAppModel.getStrCalifica());
         holder.tvAutor.setText(regAppModel.getStrDesarrollador());
         holder.tvTitulo.setText(regAppModel.getStrNombreApp());
 
+        holder.cvCv.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(activity, regAppModel.getStrNombreApp(), Toast.LENGTH_SHORT).show();
 
+                Intent intent = new Intent(activity, DetalleActivity.class);
+                intent.putExtra("NombreApp", regAppModel.getStrNombreApp());
+                intent.putExtra("Desarrollador", regAppModel.getStrDesarrollador());
+                intent.putExtra("ImgApp", regAppModel.getIntImgApp());
+                intent.putExtra("Calificacion", regAppModel.getStrCalifica());
+                intent.putExtra("Instalada", regAppModel.getStrInstalada());
+                //se pueden enviar arreglos de strings
+                activity.startActivity(intent);
+                //PARA TENER SOLO UNA ACTIVIDAD EN EL STACK
+                activity.finish();
+            }
+        });
     }
 
     @Override
@@ -86,6 +107,7 @@ public class AppAdapter extends RecyclerView.Adapter<AppAdapter.AppViewHolder>{
         private TextView tvAutor;
         private TextView tvCalifica;
         private TextView tvInstalada;
+        private CardView cvCv;
 
         public AppViewHolder(View itemView) {
             super(itemView);
@@ -97,6 +119,8 @@ public class AppAdapter extends RecyclerView.Adapter<AppAdapter.AppViewHolder>{
             tvAutor = (TextView) itemView.findViewById(R.id.cvapp_tv_autor);
             tvCalifica = (TextView) itemView.findViewById(R.id.cvapp_tv_califica);
             tvInstalada = (TextView) itemView.findViewById(R.id.cvapp_tv_instalada);
+
+            cvCv = (CardView) itemView.findViewById(R.id.cvapp_cv);
         }
     }
 

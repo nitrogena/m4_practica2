@@ -145,7 +145,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void inicializarAdaptador(){
         //instanciar el objeto de appAdaptador
         if (arrLstAppMdl.size() != 0) {
-            AppAdapter adapter = new AppAdapter(arrLstAppMdl);
+            //SE MANDAN LOS DATOS Y EL CONTEXTO
+            AppAdapter adapter = new AppAdapter(arrLstAppMdl, this);
             rvListaApp.setAdapter(adapter); //el recycler view tiene el adaptador
             tvMensaje.setText("");
         }
