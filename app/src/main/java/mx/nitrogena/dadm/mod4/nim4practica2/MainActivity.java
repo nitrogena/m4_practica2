@@ -1,69 +1,80 @@
 package mx.nitrogena.dadm.mod4.nim4practica2;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
-import android.support.v4.widget.SwipeRefreshLayout;
+/*import android.support.v4.widget.SwipeRefreshLayout;*/
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.LinearLayoutCompat;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 import android.widget.Adapter;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
 
+import mx.nitrogena.dadm.mod4.nim4practica2.Adapter.AppAdapter;
 import mx.nitrogena.dadm.mod4.nim4practica2.Model.AppModel;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
+    /*
     SwipeRefreshLayout srl;
     ListView lvApp;
-    Adapter adaptador;
+    Adapter adaptador;*/
 
     ArrayList<AppModel> arrLstAppMdl;
+
+    private RecyclerView rvListaApp;
+    private TextView tvMensaje;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        tvMensaje = (TextView) findViewById(R.id.amain_tv_mensaje);
+
         Toast.makeText(this, getResources().getString(R.string.amain_mensaje_oncreate), Toast.LENGTH_SHORT).show();
 
-        Log.i("hola", "clic en algun lugar");
+        Log.i("onCreate:", "comenzando");
+
+        //ya es un objeto el rvListaApp
+        rvListaApp = (RecyclerView) findViewById(R.id.amain_rv_recyclerV);
+        //se le va a mostrar en lista
+        LinearLayoutManager llmLayout = new LinearLayoutManager(this);
+        llmLayout.setOrientation(LinearLayoutManager.VERTICAL);
+
+        //QUE SE COMPORTE COMO EL OBJETO llmLayout
+        rvListaApp.setLayoutManager(llmLayout);
+
+        //Para mostrar en grid
+        /*GridLayoutManager glmLayout = new GridLayoutManager(this, 2);
+        rvListaApp.setLayoutManager(glmLayout);*/
+
+        //SE OBTIENEN LOS DATOS PARA EL RECYCLER VIEW
+        obtenerDatos();
+        inicializarAdaptador();
 
 
-        arrLstAppMdl = new ArrayList<AppModel>();
-        arrLstAppMdl.add(new AppModel("App abc def", "Nidia Orduña", intImgApp, dblCalifica));
-        arrLstAppMdl.add(new AppModel("App ghi jkl", "Angelina Ochoa", intImgApp, dblCalifica));
-        arrLstAppMdl.add(new AppModel("App mnñ opq", "Irma Ocaña", intImgApp, dblCalifica));
-        arrLstAppMdl.add(new AppModel("App rst uvw", "Doris Olvera", intImgApp, dblCalifica));
-
-
-        //boolean blnBandera = !(arrLstAppMdl.size()%2 == 0);
-        //final String strImgApp = blnBandera ? R.drawable.ic_action_extension : R.drawable.ic_notification_adb;
-
+        /*
         final ArrayList<String> arrLstNomApp = new ArrayList<>();
         for (AppModel regApp : arrLstAppMdl){
             arrLstNomApp.add(regApp.getStrNombreApp());
         }
 
-
-
-
         //Nos devuelve un VIEW, y debemos hacer el cast
         lvApp = (ListView) findViewById(R.id.amain_lv_app);
-
         lvApp.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, arrLstNomApp));
         lvApp.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-
                 boolean blnBandera = !(i%2 == 0);
-                final int intImgApp = blnBandera ? R.drawable.ic_content_add : R.drawable.ic_content_add_circle;
+                final int intImgApp = blnBandera ? R.drawable.ba_1 : R.drawable.sh_sm_img;
 
                 Intent intent = new Intent(MainActivity.this, DetalleActivity.class);
                 intent.putExtra("NombreApp", arrLstAppMdl.get(i).getStrNombreApp());
@@ -75,7 +86,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 finish();
             }
         });
-
+        */
 
 
 
@@ -88,6 +99,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 */
         //Objeto ya referenciado, ya existe en la memoria, por lo que no se necesita instanciarlo
+        /*
         srl = (SwipeRefreshLayout) findViewById(R.id.amain_srl);
         srl.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
@@ -95,6 +107,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             refrescarContenido(arrLstNomApp);
         }
         });
+        */
 
         /*
         FloatingActionButton fabRegistrar = (FloatingActionButton) findViewById(R.id.amain_btn_registrar);
@@ -109,6 +122,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     }
 
+    /*
     public void refrescarContenido(ArrayList<String> arrLstNomApp){
         //se puede enviar otra lista, o datos de webservice
         //String[] arrApp = getResources().getStringArray(R.array.apps);
@@ -117,6 +131,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         lvApp.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, arrLstNomApp));
         srl.setRefreshing(false);
     }
+    */
 
     @Override
     public void onClick(View vwVista) {
@@ -125,6 +140,31 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 irRegistrarApp(vwVista);
                 break;
         }
+    }
+
+    public void inicializarAdaptador(){
+        //instanciar el objeto de appAdaptador
+        if (arrLstAppMdl.size() != 0) {
+            AppAdapter adapter = new AppAdapter(arrLstAppMdl);
+            rvListaApp.setAdapter(adapter); //el recycler view tiene el adaptador
+            tvMensaje.setText("");
+        }
+        else{
+            tvMensaje.setText(getResources().getString(R.string.amain_msj_sinApp));
+        }
+    }
+
+    public void obtenerDatos(){
+
+        arrLstAppMdl = new ArrayList<AppModel>();
+
+        arrLstAppMdl.add(new AppModel("App abc def", "Nidia Orduña", R.drawable.ba_1, "4.6", "si"));
+        arrLstAppMdl.add(new AppModel("App ghi jkl", "Angelina Ochoa", R.drawable.sh_sm_img, "5.6", "si"));
+        arrLstAppMdl.add(new AppModel("App mnñ opq", "Irma Ocaña", R.drawable.ba_1, "8.6", "no"));
+        arrLstAppMdl.add(new AppModel("App rst uvw", "Doris Olvera", R.drawable.sh_sm_img, "2.6", "no"));
+        arrLstAppMdl.add(new AppModel("App nueva uno", "Bertha Ozuna", R.drawable.ba_1, "9.6", "si"));
+        arrLstAppMdl.add(new AppModel("App nueva dos", "Cecilia Ortega", R.drawable.sh_sm_img, "6.6", "si"));
+
     }
 
     public void irRegistrarApp(View vwVista){

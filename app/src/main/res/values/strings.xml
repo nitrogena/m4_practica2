@@ -21,7 +21,10 @@
     <string name="amain_tv_titCardv">Titulo</string>
     <string name="amain_tv_desCardv">Descrpción</string>
     <string name="amain_msj_sinApp">La lista no tiene elementos.</string>
+
     <string name="adetalle_btn_desinstalar">UNINSTALL</string>
     <string name="adetalle_btn_abrir">OPEN</string>
+
     <string name="cvapp_tv_instalada">INSTALLED</string>
+    <string name="cvapp_tv_noInstalada">NOT INSTALLED</string>
 </resources>

@@ -17,6 +17,35 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/amain_tv_mensaje"
+            android:text="@string/amain_msj_sinApp"/>
+            <!--android:layout_below="@+id/amain_srl"-->
+
+
+        <android.support.design.widget.FloatingActionButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_content_add"
+            android:id="@+id/amain_btn_registrar"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_below="@+id/amain_tv_mensaje"/>
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/amain_rv_recyclerV"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/amain_btn_registrar"
+            >
+        </android.support.v7.widget.RecyclerView>
+
+        <!--android:layout_below="@+id/amain_tv_mensaje"-->
+
+        <!--
         <android.support.v4.widget.SwipeRefreshLayout
             android:id="@+id/amain_srl"
             android:layout_width="match_parent"
@@ -28,20 +57,25 @@
 
             </ListView>
         </android.support.v4.widget.SwipeRefreshLayout>
+        -->
 
+        <!--
         <android.support.design.widget.FloatingActionButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/ic_content_add"
             android:id="@+id/amain_btn_registrar"
-            android:layout_below="@+id/amain_srl"
             android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true" />
+            android:layout_alignParentEnd="true"
+            android:layout_below="@+id/amain_rv_recyclerV"/>
+            -->
+
+        <!--android:layout_below="@+id/amain_srl"-->
 
         <!--android:layout_gravity="bottom|right"
             android:layout_marginRight="16dp"
             android:layout_marginBottom="16dp"-->
-
+        <!--
         <android.support.v7.widget.CardView
             android:layout_width="@dimen/amain_cv_ancho"
             android:layout_height="@dimen/amain_cv_altura"
@@ -74,15 +108,7 @@
 
             </RelativeLayout>
         </android.support.v7.widget.CardView>
-
-
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/amain_tv_mensaje"
-            android:text="@string/amain_msj_sinApp"
-            android:layout_below="@+id/amain_srl"/>
+        -->
 
 
 

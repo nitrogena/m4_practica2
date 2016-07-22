@@ -4,7 +4,7 @@
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
     android:id="@+id/cvapp_cv"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
 
     android:layout_marginBottom="@dimen/adetalle_iv_margin"
     card_view:cardCornerRadius="@dimen/amain_cv_radioEsq"
@@ -17,7 +17,7 @@
         <LinearLayout
             android:layout_weight="0.7"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="vertical">
 
 
@@ -40,7 +40,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/amain_tv_titCardv"
-
                 android:textStyle="bold"
                 android:textSize="@dimen/amain_cvtv_tamanio"/>
             <TextView
