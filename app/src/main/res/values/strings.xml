@@ -18,6 +18,7 @@
     <string name="amain_mensaje_onstop">onStop</string>
     <string name="amain_mensaje_ondestroy">onDestroy</string>
     <string name="amain_mensajeAccionSnack">Hacer algo</string>
+
     <string name="amain_tv_titCardv">Titulo</string>
     <string name="amain_tv_desCardv">Descrpción</string>
     <string name="amain_msj_sinApp">La lista no tiene elementos.</string>
@@ -28,4 +29,8 @@
     <string name="cvapp_tv_instalada">INSTALLED</string>
     <string name="cvapp_tv_noInstalada">NOT INSTALLED</string>
     <string name="amain_titulo">Aplicaciones</string>
+
+    <string name="mopcion_amain_registrar">Agregar una aplicación</string>
+    <string name="mopcion_amain_acercaDe">Acerca de</string>
+    <string name="mopcion_adetalle_editar">Editar</string>
 </resources>

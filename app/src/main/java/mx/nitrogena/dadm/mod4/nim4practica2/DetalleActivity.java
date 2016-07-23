@@ -10,6 +10,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.KeyEvent;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -32,6 +34,7 @@ public class DetalleActivity extends AppCompatActivity implements View.OnClickLi
 
         Toolbar tbActionBar = (Toolbar) findViewById(R.id.actionBar);
         setSupportActionBar(tbActionBar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         ivImgApp = (ImageView) findViewById(R.id.adetalle_iv_imgApp);
         tvNombreApp = (TextView) findViewById(R.id.adetalle_tv_nombreApp);
@@ -98,9 +101,29 @@ public class DetalleActivity extends AppCompatActivity implements View.OnClickLi
         return super.onKeyDown(keyCode, event);
     }
 
-
+    //BOTON LIKE
     @Override
     public void onClick(View view) {
         Toast.makeText(this, "Tiene calificacion de: "+strCalifica, Toast.LENGTH_SHORT).show();
+    }
+
+    //METODOS PARA EL MENU
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_opc_detalle, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.mopciones_editar:
+                Intent intent = new Intent(this, RegistroActivity.class);
+                startActivity(intent);
+                break;
+
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 }

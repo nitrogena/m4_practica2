@@ -1,5 +1,6 @@
 package mx.nitrogena.dadm.mod4.nim4practica2;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 /*import android.support.v4.widget.SwipeRefreshLayout;*/
@@ -10,6 +11,8 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Adapter;
 import android.widget.ListView;
@@ -127,7 +130,24 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     }
 
-    /*
+    //METODOS PARA EL MENU DE OPCIONES
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_opciones, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.mopciones_registrar:
+                Intent intent = new Intent(this, RegistroActivity.class);
+                startActivity(intent);
+                break;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+/*
     public void refrescarContenido(ArrayList<String> arrLstNomApp){
         //se puede enviar otra lista, o datos de webservice
         //String[] arrApp = getResources().getStringArray(R.array.apps);

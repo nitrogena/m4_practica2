@@ -13,5 +13,6 @@ public class RegistroActivity extends AppCompatActivity {
 
         Toolbar tbActionBar = (Toolbar) findViewById(R.id.actionBar);
         setSupportActionBar(tbActionBar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 }
