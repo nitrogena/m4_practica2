@@ -11,7 +11,9 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.ContextMenu;
 import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Adapter;
@@ -144,10 +146,24 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 Intent intent = new Intent(this, RegistroActivity.class);
                 startActivity(intent);
                 break;
+            case R.id.mopciones_refresh:
+                Toast.makeText(this, "Refresh", Toast.LENGTH_SHORT).show();
+                break;
         }
         return super.onOptionsItemSelected(item);
     }
-/*
+    //MENU DE CONTEXTO
+    /*
+    @Override
+    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
+        super.onCreateContextMenu(menu, v, menuInfo);
+        getMenuInflater().inflate(R.menu.menu_contexto_amain, menu);
+
+    }
+    */
+
+
+    /*
     public void refrescarContenido(ArrayList<String> arrLstNomApp){
         //se puede enviar otra lista, o datos de webservice
         //String[] arrApp = getResources().getStringArray(R.array.apps);

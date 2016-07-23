@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">NIm4Practica2</string>
+    <string name="adetalle_btn_abrir">ABRIR</string>
+    <string name="adetalle_btn_desinstalar">DESINSTALAR</string>
+    <string name="amain_mensajeAccionSnack">Registrar</string>
+    <string name="amain_msj_sinApp">La lista no tiene elementos</string>
+    <string name="amain_titulo">Aplicaciones</string>
+    <string name="amain_tv_desCardv">Descripción</string>
+    <string name="amain_tv_titCardv">Título</string>
+    <string name="aregistro_btn_registrar">Registrar</string>
+    <string name="cvapp_tv_instalada">INSTALADA</string>
+    <string name="cvapp_tv_noInstalada">NO INSTALADA</string>
+    <string name="mcontexto_adetalle_eliminar">Eliminar</string>
+    <string name="mopcion_adetalle_editar">Editar</string>
+    <string name="mopcion_amain_acercaDe">Acerca de</string>
+    <string name="mopcion_amain_registrar">Registrar una aplicación</string>
+</resources>

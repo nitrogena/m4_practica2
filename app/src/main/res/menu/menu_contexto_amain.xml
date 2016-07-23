@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-    <item></item>
-    <item></item>
+    <item
+        android:id="@+id/mcontexto_detalle_editar"
+        android:title="@string/mopcion_adetalle_editar"
+        android:orderInCategory="100"></item>
+    <item
+        android:id="@+id/mcontexto_detalle_eliminar"
+        android:title="@string/mcontexto_adetalle_eliminar"></item>
 
 </menu>

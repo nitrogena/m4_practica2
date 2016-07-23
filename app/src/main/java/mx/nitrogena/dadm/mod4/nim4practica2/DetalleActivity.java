@@ -9,6 +9,7 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.ContextMenu;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -56,7 +57,8 @@ public class DetalleActivity extends AppCompatActivity implements View.OnClickLi
 
         btnLike.setOnClickListener(this);
 
-
+        //LA IMAGEN TENDRA EL MENU DE CONTEXTO
+        registerForContextMenu(ivImgApp);
 
     }
 
@@ -125,5 +127,27 @@ public class DetalleActivity extends AppCompatActivity implements View.OnClickLi
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    //MENU CONTEXTO
+    @Override
+    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
+        super.onCreateContextMenu(menu, v, menuInfo);
+        getMenuInflater().inflate(R.menu.menu_contexto_amain, menu);
+
+    }
+
+    @Override
+    public boolean onContextItemSelected(MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.mcontexto_detalle_editar:
+                Toast.makeText(this, R.string.mopcion_adetalle_editar, Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.mcontexto_detalle_eliminar:
+                Toast.makeText(this, R.string.mcontexto_adetalle_eliminar, Toast.LENGTH_SHORT).show();
+                break;
+        }
+
+        return super.onContextItemSelected(item);
     }
 }

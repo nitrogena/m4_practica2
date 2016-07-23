@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">NIm4Practica2</string>
-    <string name="aregistro_btn_registrar">Registrar</string>
+    <string name="aregistro_btn_registrar">Add</string>
     <string-array name="apps">
         <item>App 1</item>
         <item>App 2 </item>
@@ -8,29 +8,31 @@
         <item>App 4</item>
         <item>App 5</item>
     </string-array>
-    <string name="amain_mensajeSnack">Snackbar</string>
+    <string name="amain_mensajeSnack" translatable="false">Snackbar</string>
 
-    <string name="amain_mensaje_oncreate">onCreate</string>
-    <string name="amain_mensaje_onstart">onStart</string>
-    <string name="amain_mensaje_onresume">onResume</string>
-    <string name="amain_mensaje_onrestart">onRestart</string>
-    <string name="amain_mensaje_onpause">onPause</string>
-    <string name="amain_mensaje_onstop">onStop</string>
-    <string name="amain_mensaje_ondestroy">onDestroy</string>
-    <string name="amain_mensajeAccionSnack">Hacer algo</string>
+    <string name="amain_mensaje_oncreate" translatable="false">onCreate</string>
+    <string name="amain_mensaje_onstart" translatable="false">onStart</string>
+    <string name="amain_mensaje_onresume" translatable="false">onResume</string>
+    <string name="amain_mensaje_onrestart" translatable="false">onRestart</string>
+    <string name="amain_mensaje_onpause" translatable="false">onPause</string>
+    <string name="amain_mensaje_onstop" translatable="false">onStop</string>
+    <string name="amain_mensaje_ondestroy" translatable="false">onDestroy</string>
+    <string name="amain_mensajeAccionSnack">Add</string>
 
-    <string name="amain_tv_titCardv">Titulo</string>
-    <string name="amain_tv_desCardv">Descrpción</string>
-    <string name="amain_msj_sinApp">La lista no tiene elementos.</string>
+    <string name="amain_tv_titCardv">Tittle</string>
+    <string name="amain_tv_desCardv">Description</string>
+    <string name="amain_msj_sinApp">Empty list</string>
 
     <string name="adetalle_btn_desinstalar">UNINSTALL</string>
     <string name="adetalle_btn_abrir">OPEN</string>
 
     <string name="cvapp_tv_instalada">INSTALLED</string>
     <string name="cvapp_tv_noInstalada">NOT INSTALLED</string>
-    <string name="amain_titulo">Aplicaciones</string>
+    <string name="amain_titulo">Apps</string>
 
-    <string name="mopcion_amain_registrar">Agregar una aplicación</string>
-    <string name="mopcion_amain_acercaDe">Acerca de</string>
-    <string name="mopcion_adetalle_editar">Editar</string>
+    <string name="mopcion_amain_registrar">Add app</string>
+    <string name="mopcion_amain_acercaDe">About</string>
+    <string name="mopcion_adetalle_editar">Edit</string>
+    <string name="mcontexto_adetalle_eliminar">Delete</string>
+    <string name="mopcion_amain_recargar">Refresh</string>
 </resources>
