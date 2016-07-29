@@ -56,7 +56,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 
         //VIEW PAGER
-        tbActionBar = (Toolbar) findViewById(R.id.actionBar);
+        tbActionBar = (Toolbar) findViewById(R.id.amain_tb_toolbar);
         tlTabLayout = (TabLayout) findViewById(R.id.amain_tl_tablayout);
         vpViewPager = (ViewPager) findViewById(R.id.amain_vp_viewpager);
 
@@ -165,8 +165,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private void setUpViewPager(){
         vpViewPager.setAdapter(new ViewpageAdapter(getSupportFragmentManager(), agregarFragments()));
         tlTabLayout.setupWithViewPager(vpViewPager);
-        tlTabLayout.getTabAt(0).setIcon(R.drawable.ic_content_add_circle);
-        tlTabLayout.getTabAt(1).setIcon(R.drawable.ic_content_add_circle);
+        tlTabLayout.getTabAt(0).setIcon(R.drawable.ic_action_correo);
+        tlTabLayout.getTabAt(1).setIcon(R.drawable.ic_action_correo);
     }
 
     //METODOS PARA EL MENU DE OPCIONES
