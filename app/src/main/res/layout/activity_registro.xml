@@ -40,6 +40,11 @@
         android:layout_height="wrap_content"
         android:text="@string/aregistro_cb_actualizada"/>
 
+    <TextView
+        android:id="@+id/aregistro_tv_datos"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
 
     <Button
         android:id="@+id/aregistro_btn_registrar"
@@ -47,5 +52,13 @@
         android:layout_height="wrap_content"
         android:text="@string/aregistro_btn_registrar"
         android:theme="@style/RaisedBoton"/>
+
+    <Button
+        android:id="@+id/aregistro_btn_mostrar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/aregistro_btn_mostrar"
+        android:theme="@style/RaisedBoton"/>
+
 
 </LinearLayout>

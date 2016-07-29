@@ -1,12 +1,14 @@
 package mx.nitrogena.dadm.mod4.nim4practica2;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.FileOutputStream;
@@ -31,15 +33,61 @@ public class RegistroActivity extends AppCompatActivity implements View.OnClickL
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         findViewById(R.id.aregistro_btn_registrar).setOnClickListener(this);
+        findViewById(R.id.aregistro_btn_mostrar).setOnClickListener(this);
     }
 
 
     public void onClick(View vwVista) {
         switch (vwVista.getId()) {
             case R.id.aregistro_btn_registrar:
-                generarArchivo(vwVista);
+                //generarArchivo(vwVista);
+                guardarPreferencia(vwVista);
+                break;
+            case R.id.aregistro_btn_mostrar:
+                mostrarPreferencias(vwVista);
                 break;
         }
+    }
+
+    public void guardarPreferencia(View vwVista){
+        //SE INICIALIZA, SE DA EL NOMBRE DEL ARCHIVO XML QUE TENDRA LAS PREFERENCIAS
+        //PRIVADO: SOBREESCRIBE
+        SharedPreferences spSharedP = getSharedPreferences("fxmlAplicaciones", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = spSharedP.edit();
+
+        EditText etNombreApp = (EditText) findViewById(R.id.aregistro_et_aplicacion);
+        strNombreApp = etNombreApp.getText().toString();
+
+        EditText etAutor = (EditText) findViewById(R.id.aregistro_et_autor);
+        strDesarrollador = etAutor.getText().toString();
+
+        EditText etDetalle = (EditText) findViewById(R.id.aregistro_et_detalle);
+        strDetalle = etDetalle.getText().toString();
+
+        editor.putString("aplicacion", strNombreApp);
+        editor.putString("desarrollador", strDesarrollador);
+        editor.putString("detalle", strDetalle);
+        editor.commit();
+
+        Toast.makeText(this, "la preferencia se ha creado", Toast.LENGTH_SHORT).show();
+
+        etNombreApp.setText("");
+        etAutor.setText("");
+        etDetalle.setText("");
+    }
+
+    public void mostrarPreferencias(View vwVista){
+        SharedPreferences spSharedP =  getSharedPreferences("fxmlAplicaciones", Context.MODE_PRIVATE);
+        //el 2do parametro es lo que se va a mostrar si no existe la clave "aplicacion"
+        strNombreApp = spSharedP.getString("aplicacion", "no existe el nombre de la aplicacion");
+        strDesarrollador = spSharedP.getString("desarrollador", "no existe desarrollador");
+        strDetalle = spSharedP.getString("detalle", "no existe detalle");
+
+        TextView tvDatos = (TextView) findViewById(R.id.aregistro_tv_datos);
+        String resultado = "\nNombre App: " + strNombreApp + "\nDesarrollador: " + strDesarrollador;
+        tvDatos.setText(resultado);
+
+
     }
 
     public void generarArchivo(View vwVista){
