@@ -35,4 +35,7 @@
     <string name="mopcion_adetalle_editar">Edit</string>
     <string name="mcontexto_adetalle_eliminar">Delete</string>
     <string name="mopcion_amain_recargar">Refresh</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
