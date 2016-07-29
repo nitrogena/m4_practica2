@@ -21,6 +21,9 @@
         <item name="android:icon">@color/colorIcons</item>
         <item name="android:divider">@color/colorDivider</item>
 
+        <!--<item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>-->
+
     </style>
 
 

@@ -4,6 +4,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 /*import android.support.v4.widget.SwipeRefreshLayout;*/
+import android.support.design.widget.TabLayout;
+import android.support.v4.app.Fragment;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutCompat;
@@ -24,6 +27,9 @@ import android.widget.Toast;
 import java.util.ArrayList;
 
 import mx.nitrogena.dadm.mod4.nim4practica2.Adapter.AppAdapter;
+import mx.nitrogena.dadm.mod4.nim4practica2.Adapter.ViewpageAdapter;
+import mx.nitrogena.dadm.mod4.nim4practica2.Fragment.DetalleFragment;
+import mx.nitrogena.dadm.mod4.nim4practica2.Fragment.RecyclerviewFragment;
 import mx.nitrogena.dadm.mod4.nim4practica2.Model.AppModel;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
@@ -38,14 +44,26 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private RecyclerView rvListaApp;
     private TextView tvMensaje;
 
+    //VIEWPAGER
+    private Toolbar tbActionBar;
+    private TabLayout tlTabLayout;
+    private ViewPager vpViewPager;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Toolbar tbActionBar = (Toolbar) findViewById(R.id.actionBar);
-        setSupportActionBar(tbActionBar);
-        /*tbActionBar.setTitle(R.string.amain_titulo);*/
+
+        //VIEW PAGER
+        tbActionBar = (Toolbar) findViewById(R.id.actionBar);
+        tlTabLayout = (TabLayout) findViewById(R.id.amain_tl_tablayout);
+        vpViewPager = (ViewPager) findViewById(R.id.amain_vp_viewpager);
+
+        if (tbActionBar != null){
+            setSupportActionBar(tbActionBar);
+        }
+
 
         tvMensaje = (TextView) findViewById(R.id.amain_tv_mensaje);
 
@@ -53,6 +71,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         Log.i("onCreate:", "comenzando");
 
+        //metodo que esta mas abajo para el VIEW PAGER
+        setUpViewPager();
+
+        /*SE VA AL FRAGMENT RECYCLER VIEW
         //ya es un objeto el rvListaApp
         rvListaApp = (RecyclerView) findViewById(R.id.amain_rv_recyclerV);
         //se le va a mostrar en lista
@@ -63,12 +85,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         rvListaApp.setLayoutManager(llmLayout);
 
         //Para mostrar en grid
-        /*GridLayoutManager glmLayout = new GridLayoutManager(this, 2);
-        rvListaApp.setLayoutManager(glmLayout);*/
+        //GridLayoutManager glmLayout = new GridLayoutManager(this, 2);
+        //rvListaApp.setLayoutManager(glmLayout);
 
         //SE OBTIENEN LOS DATOS PARA EL RECYCLER VIEW
         obtenerDatos();
         inicializarAdaptador();
+        */
 
 
         /*
@@ -132,6 +155,20 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     }
 
+    //METODOS PARA EL RECYCLER VIEW FRAGMENT
+    private ArrayList<Fragment> agregarFragments(){
+        ArrayList<Fragment> arrLstFrag = new ArrayList<>();
+        arrLstFrag.add(new RecyclerviewFragment());
+        arrLstFrag.add(new DetalleFragment());
+        return arrLstFrag;
+    }
+    private void setUpViewPager(){
+        vpViewPager.setAdapter(new ViewpageAdapter(getSupportFragmentManager(), agregarFragments()));
+        tlTabLayout.setupWithViewPager(vpViewPager);
+        tlTabLayout.getTabAt(0).setIcon(R.drawable.ic_content_add_circle);
+        tlTabLayout.getTabAt(1).setIcon(R.drawable.ic_content_add_circle);
+    }
+
     //METODOS PARA EL MENU DE OPCIONES
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -183,6 +220,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 
+    /*LO PUSE EN RECYCLER VIEW FRAGMENT
     public void inicializarAdaptador(){
         //instanciar el objeto de appAdaptador
         if (arrLstAppMdl.size() != 0) {
@@ -208,6 +246,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         arrLstAppMdl.add(new AppModel("App nueva dos", "Cecilia Ortega", R.drawable.sh_sm_img, "6.6", "si"));
 
     }
+    */
 
     public void irRegistrarApp(View vwVista){
         //Toast.makeText(this, "Registrando", Toast.LENGTH_SHORT).show();
