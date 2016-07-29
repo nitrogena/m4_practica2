@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
 
     tools:context="mx.nitrogena.dadm.mod4.nim4practica2.RegistroActivity">
 
@@ -14,11 +15,37 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"-->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/aregistro_msg"/>
+    <EditText
+        android:id="@+id/aregistro_et_aplicacion"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/aregistro_et_aplicacion"/>
+    <EditText
+        android:id="@+id/aregistro_et_autor"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/aregistro_et_desarrollador"/>
+    <EditText
+        android:id="@+id/aregistro_et_detalle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/aregistro_et_detalle"/>
+    <CheckBox
+        android:id="@+id/aregistro_cb_actualizada"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/aregistro_cb_actualizada"/>
+
 
     <Button
+        android:id="@+id/aregistro_btn_registrar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/aregistro_btn_registrar"
         android:theme="@style/RaisedBoton"/>
 
-</RelativeLayout>
+</LinearLayout>

@@ -38,4 +38,9 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="aregistro_msg">Ingrese los datos siguientes:</string>
+    <string name="aregistro_et_aplicacion">App name</string>
+    <string name="aregistro_et_desarrollador">Developer name</string>
+    <string name="aregistro_et_detalle">App detail</string>
+    <string name="aregistro_cb_actualizada">Installed/ Updated</string>
 </resources>

@@ -15,4 +15,9 @@
     <string name="mopcion_adetalle_editar">Editar</string>
     <string name="mopcion_amain_acercaDe">Acerca de</string>
     <string name="mopcion_amain_registrar">Registrar una aplicación</string>
+    <string name="aregistro_msg">Ingrese los datos siguientes:</string>
+    <string name="aregistro_et_aplicacion">App name</string>
+    <string name="aregistro_et_desarrollador">Developer name</string>
+    <string name="aregistro_et_detalle">App detail</string>
+    <string name="aregistro_cb_actualizada">Installed/ Updated</string>
 </resources>
