@@ -1,5 +1,6 @@
 package mx.nitrogena.dadm.mod4.nim4practica2.Model;
 
+import android.content.ContentValues;
 import android.content.Context;
 
 import java.util.ArrayList;
@@ -22,7 +23,7 @@ public class ConstructorApp {
 
     public ArrayList<AppModel>  obtenerDatosBD(){
 
-        ArrayList<AppModel> arrLstAppMdl = new ArrayList<>();
+        /*ArrayList<AppModel> arrLstAppMdl = new ArrayList<>();
 
         arrLstAppMdl.add(new AppModel("App abc def", "Nidia Orduña", R.drawable.ba_1, "4.6", "si", 5));
         arrLstAppMdl.add(new AppModel("App ghi jkl", "Angelina Ochoa", R.drawable.sh_sm_img, "5.6", "si", 3));
@@ -31,7 +32,32 @@ public class ConstructorApp {
         arrLstAppMdl.add(new AppModel("App nueva uno", "Bertha Ozuna", R.drawable.ba_1, "9.6", "si", 6));
         arrLstAppMdl.add(new AppModel("App nueva dos", "Cecilia Ortega", R.drawable.sh_sm_img, "6.6", "si", 5));
 
-        return arrLstAppMdl;
+        return arrLstAppMdl;*/
+
+        BaseDatos db = new BaseDatos(contexto);
+
+        insertarTresApp(db);
+
+        return db.obtenerTodasApp();
 
     }
+
+    public void insertarTresApp(BaseDatos db){
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(ConstantesBD.TABLE_APPS_NAME, "Nidia");
+        contentValues.put(ConstantesBD.TABLE_APPS_DEVELOPER, "NIOF");
+
+        db.insertarApp(contentValues);
+
+        contentValues.put(ConstantesBD.TABLE_APPS_NAME, "Nicolas");
+        contentValues.put(ConstantesBD.TABLE_APPS_DEVELOPER, "Estrella");
+
+        db.insertarApp(contentValues);
+
+        contentValues.put(ConstantesBD.TABLE_APPS_NAME, "Nidia");
+        contentValues.put(ConstantesBD.TABLE_APPS_DEVELOPER, "NIOF");
+
+        db.insertarApp(contentValues);
+    }
+
 }
