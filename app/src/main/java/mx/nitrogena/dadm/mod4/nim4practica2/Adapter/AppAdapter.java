@@ -77,6 +77,7 @@ public class AppAdapter extends RecyclerView.Adapter<AppAdapter.AppViewHolder>{
                 intent.putExtra("ImgApp", regAppModel.getIntImgApp());
                 intent.putExtra("Calificacion", regAppModel.getStrCalifica());
                 intent.putExtra("Instalada", regAppModel.getStrInstalada());
+                intent.putExtra("Like", regAppModel.getIntLike());
                 //se pueden enviar arreglos de strings
                 activity.startActivity(intent);
                 //PARA TENER SOLO UNA ACTIVIDAD EN EL STACK

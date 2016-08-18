@@ -81,16 +81,24 @@
             android:layout_weight="1"
             android:theme="@style/RaisedBoton"/>
     </LinearLayout>
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
+
         android:layout_weight="1">
         <ImageButton
             android:id="@+id/adetalle_btn_like"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/thumb_up_48"/>
-    </LinearLayout>
+            android:src="@drawable/thumb_up_48"
+            android:layout_alignParentLeft="true"/>
+        <TextView
+            android:id="@+id/adetalle_tv_numLike"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:text="@string/adetalle_tv_numLike"
+            android:layout_centerVertical="true"/>
+    </RelativeLayout>
 
 </LinearLayout>

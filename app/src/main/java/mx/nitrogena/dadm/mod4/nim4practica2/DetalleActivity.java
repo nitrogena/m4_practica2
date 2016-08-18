@@ -28,6 +28,8 @@ public class DetalleActivity extends AppCompatActivity implements View.OnClickLi
     private ImageButton btnLike;
     private String strCalifica;
 
+    private TextView tvIntLike;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,6 +45,10 @@ public class DetalleActivity extends AppCompatActivity implements View.OnClickLi
 
         btnLike = (ImageButton) findViewById(R.id.adetalle_btn_like);
 
+        //PARA LA VISTA PRESENTADO Y EL SQLITE
+        tvIntLike = (TextView) findViewById(R.id.adetalle_tv_numLike);
+
+
         //Obteniendo datos de la MainActivity O ADAPTADOR
         Bundle bdlExtras = getIntent().getExtras();
         String strNombreApp = bdlExtras.getString("NombreApp");
@@ -51,9 +57,13 @@ public class DetalleActivity extends AppCompatActivity implements View.OnClickLi
         strCalifica = bdlExtras.getString("Calificacion");
         String strInstalada = bdlExtras.getString("Instalada");
 
+        int intLike = bdlExtras.getInt("Like");
+
         tvNombreApp.setText(strNombreApp);
         tvAutorApp.setText(strDesarrollador);
         ivImgApp.setImageResource(intImgApp);
+
+        tvIntLike.setText(String.valueOf(intLike) + " likes");
 
         btnLike.setOnClickListener(this);
 

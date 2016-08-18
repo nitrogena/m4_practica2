@@ -15,15 +15,24 @@ import java.util.ArrayList;
 import mx.nitrogena.dadm.mod4.nim4practica2.Adapter.AppAdapter;
 import mx.nitrogena.dadm.mod4.nim4practica2.Model.AppModel;
 import mx.nitrogena.dadm.mod4.nim4practica2.R;
+import mx.nitrogena.dadm.mod4.nim4practica2.presenter.InterfaceRecyclerVFragmentPresenter;
+import mx.nitrogena.dadm.mod4.nim4practica2.presenter.RecyclerVFragmentPresenter;
 
 /**
  * Created by Nidia on 23/07/2016.
+ *
+ * se tiene un MVC con el appModel, fragement_recycler view, recyclerviewFragment
  */
-public class RecyclerviewFragment extends Fragment {
+public class RecyclerviewFragment extends Fragment implements InterfaceRecyclerVFragmentV{
+
+    //SE PONE EL implements CUANDO SE QUIERE UNA VISTA PRESENTACION
+    //Se debe generar una vista presentador también para detalle fragment
 
     ArrayList<AppModel> arrLstAppMdl;
 
     private RecyclerView rvListaApp;
+
+    private InterfaceRecyclerVFragmentPresenter presenter;
 
     @Nullable
     @Override
@@ -38,6 +47,42 @@ public class RecyclerviewFragment extends Fragment {
 
         //ya es un objeto el rvListaApp
         rvListaApp = (RecyclerView) vwVista.findViewById(R.id.amain_rv_recyclerV);
+
+        /*Se quito con la vista presentador
+        //SE OBTIENEN LOS DATOS PARA EL RECYCLER VIEW
+        obtenerDatos();
+        inicializarAdaptador();
+        */
+
+        presenter = new RecyclerVFragmentPresenter(this, getContext());
+        return vwVista;
+
+    }
+
+    /*
+    public void inicializarAdaptador(){
+        //instanciar el objeto de appAdaptador
+        if (arrLstAppMdl.size() != 0) {
+            //SE MANDAN LOS DATOS Y EL CONTEXTO
+
+            //se fue a crearAdaptador
+            //AppAdapter adapter = new AppAdapter(arrLstAppMdl, getActivity());
+
+            //se fue a inicializarAdaptador
+            //rvListaApp.setAdapter(adapter); //el recycler view tiene el adaptador
+            //tvMensaje.setText("");
+        }
+        else{
+            //tvMensaje.setText(getResources().getString(R.string.amain_msj_sinApp));
+        }
+    }
+    */
+
+    @Override
+    public void generarLayoutLV() {
+
+        //ESTE METODO SE COLOCA PARA LA VISTA PRESENTADOR
+
         //se le va a mostrar en lista
         LinearLayoutManager llmLayout = new LinearLayoutManager(getActivity());
         llmLayout.setOrientation(LinearLayoutManager.VERTICAL);
@@ -49,29 +94,24 @@ public class RecyclerviewFragment extends Fragment {
         //GridLayoutManager glmLayout = new GridLayoutManager(this, 2);
         //rvListaApp.setLayoutManager(glmLayout);
 
-        //SE OBTIENEN LOS DATOS PARA EL RECYCLER VIEW
-        obtenerDatos();
-        inicializarAdaptador();
-
-
-        return vwVista;
-
     }
 
-    public void inicializarAdaptador(){
-        //instanciar el objeto de appAdaptador
-        if (arrLstAppMdl.size() != 0) {
-            //SE MANDAN LOS DATOS Y EL CONTEXTO
-            AppAdapter adapter = new AppAdapter(arrLstAppMdl, getActivity());
-            rvListaApp.setAdapter(adapter); //el recycler view tiene el adaptador
-            //tvMensaje.setText("");
-        }
-        else{
-            //tvMensaje.setText(getResources().getString(R.string.amain_msj_sinApp));
-        }
+    @Override
+    public AppAdapter crearAdaptador(ArrayList<AppModel> arrLstAppMdl) {
+
+        //ESTE METODO SE COLOCA PARA LA VISTA PRESENTADOR
+
+        AppAdapter adaptador = new AppAdapter(arrLstAppMdl, getActivity());
+        return adaptador;
     }
 
-    public void obtenerDatos(){
+    @Override
+    public void inicializarAdaptadorRV(AppAdapter adaptador) {
+        //ESTE METODO SE COLOCA PARA LA VISTA PRESENTADOR
+        rvListaApp.setAdapter(adaptador); //el recycler view tiene el adaptador
+    }
+
+    /*public void obtenerDatos(){
 
         arrLstAppMdl = new ArrayList<AppModel>();
 
@@ -82,5 +122,5 @@ public class RecyclerviewFragment extends Fragment {
         arrLstAppMdl.add(new AppModel("App nueva uno", "Bertha Ozuna", R.drawable.ba_1, "9.6", "si"));
         arrLstAppMdl.add(new AppModel("App nueva dos", "Cecilia Ortega", R.drawable.sh_sm_img, "6.6", "si"));
 
-    }
+    }*/
 }
